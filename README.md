@@ -1,32 +1,61 @@
+# 🚢 Titanic Data Science Project: Análisis Multimodelo de Supervivencia
 
-** Base de datos sobre pasajeros del Titanic. (Extraidos de Kaggle)
- *** dataset.csv : dispone de toda la información. (entrenamiento)
- *** newData : se desconoce si sobrevio o no al hundimiento. (produccion real)
-
-*** Caractaeristicas 
- *** (edad, género, situación socio-económica,...),
- ***  De tipo cualitativa y cuantitativa.
- *** suficiente registros para entenar modelo predictivo.
- *** datos incompletos.
- *** Mayor informacion de los datos, consultar: Report on the Loss of the ’Titanic’ (S.S.) (1990), British Board of Trade Inquiry Report_(reprint), Gloucester, UK: Allan Sutton Publishing
- 
- *** Variable independiente: sobrevivio o no al hundimiento del Titanic.
- 
-**** Objetivos ****
-** Encontrar alguna relación entre los atributos (Variables independientes)
-** probabilidad de que un pasajero sobreviva o no al naufragio, por ejemplo, supervivencia por edad, sexo, clase, etc.
+## 📋 Descripción del Proyecto
+En este proyecto, he desarrollado un ecosistema de aprendizaje automático para predecir la supervivencia de los pasajeros del Titanic. Mi enfoque no se limitó a un solo algoritmo; exploré la trazabilidad de los datos desde el aprendizaje no supervisado (**Clustering**) hasta el aprendizaje profundo (**Deep Learning**), permitiendo una comparación científica entre modelos probabilísticos, lógicos y neuronales.
 
 
-**** Actividades ****
-* 1. Exploración de los datos (representación grafica de las variables y estudio estadístico de las mismas)
-  ** Implementar codigo para análisis descriptivo de los datos (medidas de frecuencia, tendencia, dispersión, posición, distribución).
-  ** Comprobar que no haya variables que tengan valores constantes, ya que estas variables perjudican al modelo.
-  ** Con este analisis se pueden excluir aquellas variables que no aporten nada al estudio (criterio del experto).
-  
-* 2. Preprocesamiento (mejoramiento calidad de los datos)
- ** 2.1 Depuración de datos
-  *** Deteccion de outliers mediante técnicas estadísticas:
-      * implementar codigo para aplciar ténicas estadisticas en la detección de valores sospechosos de ser outliers(ruido) :
-    	*  metodo basado en la desviación típica, 
-		*  rango intercuartílico y
-		*  diagrama de caja
+
+## 🛠️ Tecnologías Utilizadas
+* **Lenguaje:** Python 3.14
+* **Librerías Principales:** `Pandas`, `Scikit-Learn`, `NumPy`, `Matplotlib`.
+* **Modelos Implementados:** * Naive Bayes (Probabilístico)
+    * Árboles de Decisión (Lógico)
+    * **K-Nearest Neighbors - K-NN (Ganador)**
+    * Multilayer Perceptron - MLP (Neuronal)
+    * Autoencoder (Deep Learning / Reconstrucción)
+
+## 🚀 Flujo de Trabajo
+
+### 1. Preprocesamiento y Limpieza
+Realicé una curación de datos exhaustiva, tratando valores nulos en la edad, codificando variables categóricas (sexo, puertos de embarque) y escalando las variables numéricas para asegurar la convergencia de las redes neuronales.
+
+### 2. Análisis de Perfiles (Clustering)
+Antes de predecir, utilicé técnicas de agrupamiento para entender la jerarquía social del barco. Esto me permitió identificar que el género y la clase eran los ejes conductores de la estructura de datos.
+
+### 3. Competencia de Modelos (Clasificación)
+Sometí al dataset a una competencia de 5 algoritmos. Utilicé **GridSearchCV** para la sintonía fina de hiperparámetros, optimizando cada modelo para obtener su máximo rendimiento.
+
+
+
+## 📊 Resultados y Evaluación
+Tras validar los modelos con un conjunto de prueba, obtuve los siguientes resultados de precisión (**Accuracy**):
+
+| Modelo | Precisión (Accuracy) | Estado |
+| :--- | :--- | :--- |
+| **K-Nearest Neighbors (K-NN)** | **83.21%** | **Modelo Seleccionado** |
+| Multilayer Perceptron (MLP) | 82.09% | Finalista |
+| Autoencoder Clasificador | 80.60% | Finalista |
+| Árbol de Decisión | 80.60% | Competitivo |
+| Naive Bayes | 77.99% | Base Line |
+
+### ¿Por qué elegí K-NN?
+Aunque implementé arquitecturas de Redes Neuronales avanzadas, **mi análisis determinó que K-NN es el modelo más asertivo**. Su capacidad para clasificar basándose en la similitud de perfiles capturó de manera más orgánica la realidad del Titanic, donde pasajeros con características similares (vecinos sociales) tendieron a compartir el mismo destino.
+
+## 🧠 Innovación: Autoencoders
+Implementé un **Autoencoder** con un doble propósito:
+1. **Validación:** Confirmar la integridad de mis variables mediante un bajo Error Cuadrático Medio (MSE).
+2. **Clasificación Profunda:** Comprimir la información en un espacio latente de 5 dimensiones para predecir la supervivencia desde una perspectiva de aprendizaje no supervisado.
+
+
+
+## 💡 Conclusión Final
+Este proyecto me ha permitido demostrar que la tragedia del Titanic tuvo una **estructura matemática subyacente**. A través de mi investigación, he logrado construir un motor de predicción que no solo acierta en un 83.21%, sino que también ofrece un índice de veracidad estructural sobre la calidad de los datos de cada pasajero.
+
+---
+
+### 📂 Estructura del Repositorio
+* `Titanic_Analysis.ipynb`: Cuaderno principal con todo el pipeline de datos.
+* `data/`: Conjuntos de entrenamiento y test real.
+* `results/`: Tabla maestra con las predicciones consolidadas de todos los modelos.
+
+**Desarrollado por Duvan Castro** *Analista de Datos / Entusiasta de la Inteligencia Artificial*
